@@ -1,0 +1,16 @@
+{
+  "name": "non-navigation",
+  "main": "./lib/non-navigation",
+  "version": "0.0.0",
+  "description": "A short description of your package",
+  "activationCommands": {
+    "atom-workspace": "non-navigation:toggle"
+  },
+  "repository": "https://github.com/atom/non-navigation",
+  "license": "MIT",
+  "engines": {
+    "atom": ">0.50.0"
+  },
+  "dependencies": {
+  }
+}
