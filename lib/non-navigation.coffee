@@ -1,5 +1,4 @@
 _ = require 'underscore-plus'
-# {Point} = require 'atom'
 
 module.exports =
 class NonNavigation
@@ -10,7 +9,8 @@ class NonNavigation
   moveToNextBoundary: ->
     for cursor in @cursors()
       scope = scope or cursor.getScopeDescriptor()
-      if position = cursor.getNextWordBoundaryBufferPosition(@cursorOptions(scope))
+      options = @cursorOptions(scope)
+      if position = cursor.getNextWordBoundaryBufferPosition(options)
         cursor.setBufferPosition(position)
 
   wordAndNonWordRegExp: (scope, options={}) ->
