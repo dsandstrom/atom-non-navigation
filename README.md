@@ -1,5 +1,10 @@
-# non-navigation package
+# Non Navigation
+###### An Atom Package - [Atom.io](https://atom.io/packages/non-navigation) : [Github](https://github.com/dsandstrom/atom-non-navigation) : [![Build Status](https://travis-ci.org/dsandstrom/atom-non-navigation.svg?branch=master)](https://travis-ci.org/dsandstrom/atom-non-navigation)
 
-A short description of your package.
+### Instructions
 
-![A screenshot of your spankin' package](https://f.cloud.github.com/assets/69169/2290250/c35d867a-a017-11e3-86be-cd7c5bf3ff9b.gif)
+
+### Dependencies
+
+
+### Commands
