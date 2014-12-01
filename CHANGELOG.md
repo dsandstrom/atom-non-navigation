@@ -1,3 +1,4 @@
-## 0.1.0 - First Release
-* Every feature added
-* Every bug fixed
+## 0.1.0
+2014-11-30
+* Every feature added ever
+* Every bug fixed ever
