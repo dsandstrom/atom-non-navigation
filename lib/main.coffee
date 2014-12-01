@@ -1,4 +1,4 @@
-SubwordNavigation = require './non-navigation'
+NonNavigation = require './non-navigation'
 
 module.exports =
   activate: (state) ->
