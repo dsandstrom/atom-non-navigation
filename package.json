@@ -1,6 +1,6 @@
 {
   "name": "non-navigation",
-  "main": "./lib/non-navigation",
+  "main": "./lib/main",
   "version": "0.0.0",
   "description": "Skip over words and non-words",
   "activationCommands": {},

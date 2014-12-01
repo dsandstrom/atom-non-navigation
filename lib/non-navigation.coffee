@@ -1,13 +1,10 @@
-NonNavigationView = require './non-navigation-view'
+# _ = require 'underscore-plus'
+# {Point} = require 'atom'
 
 module.exports =
-  nonNavigationView: null
+class NonNavigation
+  constructor: (@editor) ->
 
-  activate: (state) ->
-    @nonNavigationView = new NonNavigationView(state.nonNavigationViewState)
+  destroy: ->
 
-  deactivate: ->
-    @nonNavigationView.destroy()
-
-  serialize: ->
-    nonNavigationViewState: @nonNavigationView.serialize()
+  moveToNextBoundary: ->
