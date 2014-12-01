@@ -1,22 +1,4 @@
 # # See https://atom.io/docs/latest/creating-a-package#menus for more details
-# 'context-menu':
-#   'atom-text-editor': [
-#     {
-#       'label': 'Toggle non-navigation'
-#       'command': 'non-navigation:toggle'
-#     }
-#   ]
-# 'menu': [
-#   {
-#     'label': 'Packages'
-#     'submenu': [
-#       'label': 'non-navigation'
-#       'submenu': [
-#         {
-#           'label': 'Toggle'
-#           'command': 'non-navigation:toggle'
-#         }
-#       ]
-#     ]
-#   }
-# ]
+'context-menu':
+  'atom-text-editor': []
+'menu': []
