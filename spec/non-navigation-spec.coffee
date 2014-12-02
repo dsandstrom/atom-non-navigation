@@ -157,3 +157,12 @@ describe 'NonNavigation', ->
         cursorPosition = editor.getCursorBufferPosition()
         expect(cursorPosition.row).toBe 0
         expect(cursorPosition.column).toBe 2
+
+    describe "on consecutive spaces", ->
+      it "when cursor is at the beginning", ->
+        editor.insertText('  var\n')
+        editor.moveUp 1
+        editorView.trigger 'non-navigation:move-right'
+        cursorPosition = editor.getCursorBufferPosition()
+        expect(cursorPosition.row).toBe 0
+        expect(cursorPosition.column).toBe 2

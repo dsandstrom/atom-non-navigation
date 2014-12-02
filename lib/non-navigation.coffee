@@ -8,8 +8,7 @@ class NonNavigation
 
   moveToNextBoundary: ->
     for cursor in @cursors()
-      scope = scope or cursor.getScopeDescriptor()
-      options = @cursorOptions(scope)
+      options = @cursorOptions(cursor.getScopeDescriptor())
       if position = cursor.getNextWordBoundaryBufferPosition(options)
         cursor.setBufferPosition(position)
 
