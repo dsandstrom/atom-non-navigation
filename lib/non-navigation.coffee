@@ -16,7 +16,7 @@ class NonNavigation
     nonWordCharacters = atom.config.get(scope, 'editor.nonWordCharacters')
     segments = ["^[\t ]*$"]
     segments.push("[^\\s#{_.escapeRegExp(nonWordCharacters)}]+")
-    segments.push("[#{_.escapeRegExp(nonWordCharacters)}]?")
+    segments.push("\\s*[#{_.escapeRegExp(nonWordCharacters)}]?")
     new RegExp(segments.join("|"), "g")
 
   cursors: ->
