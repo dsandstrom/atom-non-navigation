@@ -1,3 +1,7 @@
+## 1.0.0
+2015-1-11
+* Fix deprecations
+
 ## 0.3.0
 2015-1-11
 * Fix command activation

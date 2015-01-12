@@ -11,12 +11,12 @@ class NonNavigation
 
   moveToNextBoundary: ->
     for cursor in @cursors()
-      options = @cursorOptions(cursor.getScopeDescriptor())
+      options = @cursorOptions(scope: cursor.getScopeDescriptor())
       if position = cursor.getNextWordBoundaryBufferPosition(options)
         cursor.setBufferPosition(position)
 
-  wordAndNonWordRegExp: (scope, options={}) ->
-    nonWordCharacters = atom.config.get(scope, 'editor.nonWordCharacters')
+  wordAndNonWordRegExp: (options={}) ->
+    nonWordCharacters = atom.config.get('editor.nonWordCharacters', scope: options.scope)
     segments = ["^[\t ]*$"]
     segments.push("[^\\s#{_.escapeRegExp(nonWordCharacters)}]+")
     segments.push("\\s*[#{_.escapeRegExp(nonWordCharacters)}]?")
@@ -25,5 +25,5 @@ class NonNavigation
   cursors: ->
     if @editor() then @editor().getCursors() else []
 
-  cursorOptions: (scope, options={}) ->
-    {wordRegex: @wordAndNonWordRegExp(scope, options)}
+  cursorOptions: (options={}) ->
+    {wordRegex: @wordAndNonWordRegExp(options)}
