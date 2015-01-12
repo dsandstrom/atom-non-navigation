@@ -18,5 +18,5 @@ However, this is the same command as `autocomplete:toggle` so I don't want to ad
 'non-navigation:move-right'
 ```
 
-### Notes
-In beta
+### Dependencies
+Requires Atom v0.168.0 and up

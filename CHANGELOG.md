@@ -1,3 +1,7 @@
+## 0.3.0
+2015-1-11
+* Fix command activation
+
 ## 0.2.0
 2014-12-04
 * Skip over consecutive spaces

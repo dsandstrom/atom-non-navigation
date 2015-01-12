@@ -7,7 +7,7 @@
   "repository": "https://github.com/dsandstrom/atom-non-navigation",
   "license": "MIT",
   "engines": {
-    "atom": ">0.50.0"
+    "atom": ">= 0.168.0"
   },
   "devDependencies": {
     "fs-plus": "2.x",
