@@ -2,9 +2,12 @@ _ = require 'underscore-plus'
 
 module.exports =
 class NonNavigation
-  constructor: (@editor) ->
+  constructor: () ->
 
   destroy: ->
+
+  editor: ->
+    atom.workspace.getActiveTextEditor()
 
   moveToNextBoundary: ->
     for cursor in @cursors()
@@ -20,7 +23,7 @@ class NonNavigation
     new RegExp(segments.join("|"), "g")
 
   cursors: ->
-    if @editor then @editor.getCursors() else []
+    if @editor() then @editor().getCursors() else []
 
   cursorOptions: (scope, options={}) ->
     {wordRegex: @wordAndNonWordRegExp(scope, options)}

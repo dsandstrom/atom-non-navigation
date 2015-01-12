@@ -2,10 +2,10 @@ NonNavigation = require './non-navigation'
 
 module.exports =
   activate: (state) ->
-    atom.workspaceView.eachEditorView (editorView) ->
-      nonNavigation = new NonNavigation(editorView.editor)
+    nonNavigation = new NonNavigation()
 
-      editorView.command "non-navigation:move-right", ->
+    atom.commands.add 'atom-workspace',
+      "non-navigation:move-right": =>
         nonNavigation.moveToNextBoundary()
 
   deactivate: ->
