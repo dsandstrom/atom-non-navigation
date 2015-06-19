@@ -1,18 +1,23 @@
 # Non Navigation
 ###### An Atom Package - [Atom.io](https://atom.io/packages/non-navigation) : [Github](https://github.com/dsandstrom/atom-non-navigation) : [![Build Status](https://travis-ci.org/dsandstrom/atom-non-navigation.svg?branch=master)](https://travis-ci.org/dsandstrom/atom-non-navigation)
-Allows navigation of words and non-word characters.  It will skip over whole words, but only skips over one non-word character at a time.  The purpose of this package is to be like the core command: `editor:move-to-end-of-word`, but not skip all consecutive non-word characters.  So you can jump into quotes or parenthesis with ease.
+
+Allows you to skip over words to jump into parenthesis or quotes. It is like the core command `editor:move-to-end-of-word`, but only traverses one non-word character at a time. 
 
 ### Non-word characters
 The defaults are: /\()"':,.;<>~!@#$%^&*|+=[]{}`?-, but they can be changed in your settings, globally or per syntax.
 
 ### Instructions
-Add a keymap.  I use this on Linux:
+There are no default keymaps, you must add one yourself. Here are mine:
 ```cson
-'.workspace .editor':
+'.platform-linux atom-text-editor':
   'ctrl-space': 'non-navigation:move-right'
-```
-However, this is the same command as `autocomplete:toggle` so I don't want to add a conflict.  I'm open to suggestions on what to set in the package settings.
 
+'.platform-win32 atom-text-editor':
+  'ctrl-space': 'non-navigation:move-right'
+
+'.platform-darwin atom-text-editor':
+  'cmd-space': 'non-navigation:move-right'
+```
 ### Commands
 ```cson
 'non-navigation:move-right'

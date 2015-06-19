@@ -1,5 +1,5 @@
-# '.platform-linux body atom-text-editor':
+# '.platform-linux atom-text-editor':
 #   'ctrl-space': 'non-navigation:move-right'
 #
-# '.platform-darwin body atom-text-editor':
+# '.platform-darwin atom-text-editor':
 #   'cmd-space': 'non-navigation:move-right'

@@ -1,3 +1,7 @@
+## 1.1.0
+2015-6-19
+* Update specs and commands
+
 ## 1.0.0
 2015-1-11
 * Fix deprecations
