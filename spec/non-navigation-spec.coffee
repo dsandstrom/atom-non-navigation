@@ -1,7 +1,3 @@
-fs = require 'fs-plus'
-path = require 'path'
-temp = require 'temp'
-
 describe 'NonNavigation', ->
   [workspaceElement, editorView, editor, activationPromise] = []
 
