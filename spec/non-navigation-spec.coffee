@@ -6,26 +6,20 @@ describe 'NonNavigation', ->
   [workspaceElement, editorView, editor, activationPromise] = []
 
   beforeEach ->
-    workspaceElement = atom.views.getView(atom.workspace).__spacePenView
-    directory = temp.mkdirSync()
-    atom.project.setPaths(directory)
-    filePath = path.join(directory, 'example.rb')
+    workspaceElement = atom.views.getView(atom.workspace)
+    jasmine.attachToDOM(workspaceElement)
 
     waitsForPromise ->
-      atom.workspace.open(filePath)
-
-    runs ->
-      workspaceElement.attachToDom()
-      editorView = workspaceElement.getActiveView()
-      editor = editorView.getEditor()
-      activationPromise = atom.packages.activatePackage('non-navigation')
+      atom.workspace.open('sample.rb').then (o) ->
+        editor = o
+        editorView = atom.views.getView(editor)
 
     waitsForPromise ->
-      activationPromise
+      atom.packages.activatePackage('non-navigation')
 
   describe 'move-right', ->
     it 'does not change an empty file', ->
-      editorView.trigger 'non-navigation:move-right'
+      atom.commands.dispatch editorView, 'non-navigation:move-right'
       cursorPosition = editor.getCursorBufferPosition()
       expect(cursorPosition.row).toBe 0
       expect(cursorPosition.column).toBe 0
@@ -33,7 +27,7 @@ describe 'NonNavigation', ->
     it "on blank line, before '\n'", ->
       editor.insertText("\n")
       editor.moveUp 1
-      editorView.trigger 'non-navigation:move-right'
+      atom.commands.dispatch editorView, 'non-navigation:move-right'
       cursorPosition = editor.getCursorBufferPosition()
       expect(cursorPosition.row).toBe 1
       expect(cursorPosition.column).toBe 0
@@ -43,7 +37,7 @@ describe 'NonNavigation', ->
         editor.insertText(".word.\n")
         editor.moveUp 1
         editor.moveRight() for n in [0...2]
-        editorView.trigger 'non-navigation:move-right'
+        atom.commands.dispatch editorView, 'non-navigation:move-right'
         cursorPosition = editor.getCursorBufferPosition()
         expect(cursorPosition.row).toBe 0
         expect(cursorPosition.column).toBe 5
@@ -52,7 +46,7 @@ describe 'NonNavigation', ->
       it "when cursor is at the beginning", ->
         editor.insertText("sub_word \n")
         editor.moveUp 1
-        editorView.trigger 'non-navigation:move-right'
+        atom.commands.dispatch editorView, 'non-navigation:move-right'
         cursorPosition = editor.getCursorBufferPosition()
         expect(cursorPosition.row).toBe 0
         expect(cursorPosition.column).toBe 8
@@ -61,7 +55,7 @@ describe 'NonNavigation', ->
       it "when cursor is at the beginning", ->
         editor.insertText("camelCase \n")
         editor.moveUp 1
-        editorView.trigger 'non-navigation:move-right'
+        atom.commands.dispatch editorView, 'non-navigation:move-right'
         cursorPosition = editor.getCursorBufferPosition()
         expect(cursorPosition.row).toBe 0
         expect(cursorPosition.column).toBe 9
@@ -70,7 +64,7 @@ describe 'NonNavigation', ->
       it "when cursor is at the beginning", ->
         editor.insertText("()\n")
         editor.moveUp 1
-        editorView.trigger 'non-navigation:move-right'
+        atom.commands.dispatch editorView, 'non-navigation:move-right'
         cursorPosition = editor.getCursorBufferPosition()
         expect(cursorPosition.row).toBe 0
         expect(cursorPosition.column).toBe 1
@@ -79,7 +73,7 @@ describe 'NonNavigation', ->
         editor.insertText("()\n")
         editor.moveUp 1
         editor.moveRight 1
-        editorView.trigger 'non-navigation:move-right'
+        atom.commands.dispatch editorView, 'non-navigation:move-right'
         cursorPosition = editor.getCursorBufferPosition()
         expect(cursorPosition.row).toBe 0
         expect(cursorPosition.column).toBe 2
@@ -88,7 +82,7 @@ describe 'NonNavigation', ->
       it "when cursor is at the beginning", ->
         editor.insertText("{()}\n")
         editor.moveUp 1
-        editorView.trigger 'non-navigation:move-right'
+        atom.commands.dispatch editorView, 'non-navigation:move-right'
         cursorPosition = editor.getCursorBufferPosition()
         expect(cursorPosition.row).toBe 0
         expect(cursorPosition.column).toBe 1
@@ -97,7 +91,7 @@ describe 'NonNavigation', ->
         editor.insertText("{()}\n")
         editor.moveUp 1
         editor.moveRight 1
-        editorView.trigger 'non-navigation:move-right'
+        atom.commands.dispatch editorView, 'non-navigation:move-right'
         cursorPosition = editor.getCursorBufferPosition()
         expect(cursorPosition.row).toBe 0
         expect(cursorPosition.column).toBe 2
@@ -106,7 +100,7 @@ describe 'NonNavigation', ->
         editor.insertText("{()}\n")
         editor.moveUp 1
         editor.moveRight 2
-        editorView.trigger 'non-navigation:move-right'
+        atom.commands.dispatch editorView, 'non-navigation:move-right'
         cursorPosition = editor.getCursorBufferPosition()
         expect(cursorPosition.row).toBe 0
         expect(cursorPosition.column).toBe 3
@@ -115,7 +109,7 @@ describe 'NonNavigation', ->
         editor.insertText("{()}\n")
         editor.moveUp 1
         editor.moveRight 3
-        editorView.trigger 'non-navigation:move-right'
+        atom.commands.dispatch editorView, 'non-navigation:move-right'
         cursorPosition = editor.getCursorBufferPosition()
         expect(cursorPosition.row).toBe 0
         expect(cursorPosition.column).toBe 4
@@ -124,7 +118,7 @@ describe 'NonNavigation', ->
       it "when cursor is at the beginning", ->
         editor.insertText("''\n")
         editor.moveUp 1
-        editorView.trigger 'non-navigation:move-right'
+        atom.commands.dispatch editorView, 'non-navigation:move-right'
         cursorPosition = editor.getCursorBufferPosition()
         expect(cursorPosition.row).toBe 0
         expect(cursorPosition.column).toBe 1
@@ -133,7 +127,7 @@ describe 'NonNavigation', ->
         editor.insertText("''\n")
         editor.moveUp 1
         editor.moveRight 1
-        editorView.trigger 'non-navigation:move-right'
+        atom.commands.dispatch editorView, 'non-navigation:move-right'
         cursorPosition = editor.getCursorBufferPosition()
         expect(cursorPosition.row).toBe 0
         expect(cursorPosition.column).toBe 2
@@ -142,7 +136,7 @@ describe 'NonNavigation', ->
       it "when cursor is at the beginning", ->
         editor.insertText('""\n')
         editor.moveUp 1
-        editorView.trigger 'non-navigation:move-right'
+        atom.commands.dispatch editorView, 'non-navigation:move-right'
         cursorPosition = editor.getCursorBufferPosition()
         expect(cursorPosition.row).toBe 0
         expect(cursorPosition.column).toBe 1
@@ -151,7 +145,7 @@ describe 'NonNavigation', ->
         editor.insertText('""\n')
         editor.moveUp 1
         editor.moveRight 1
-        editorView.trigger 'non-navigation:move-right'
+        atom.commands.dispatch editorView, 'non-navigation:move-right'
         cursorPosition = editor.getCursorBufferPosition()
         expect(cursorPosition.row).toBe 0
         expect(cursorPosition.column).toBe 2
@@ -160,7 +154,7 @@ describe 'NonNavigation', ->
       it "when cursor is at the beginning", ->
         editor.insertText('  var\n')
         editor.moveUp 1
-        editorView.trigger 'non-navigation:move-right'
+        atom.commands.dispatch editorView, 'non-navigation:move-right'
         cursorPosition = editor.getCursorBufferPosition()
         expect(cursorPosition.row).toBe 0
         expect(cursorPosition.column).toBe 2
