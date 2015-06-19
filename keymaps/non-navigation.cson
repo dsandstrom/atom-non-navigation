@@ -1,2 +1,5 @@
-# '.workspace .editor':
-#   'ctrl-alt-o': 'non-navigation:move-right'
+# '.platform-linux body atom-text-editor':
+#   'ctrl-space': 'non-navigation:move-right'
+#
+# '.platform-darwin body atom-text-editor':
+#   'cmd-space': 'non-navigation:move-right'
