@@ -1,7 +1,7 @@
 {
   "name": "non-navigation",
   "main": "./lib/main",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "Skip over words and non-words",
   "activationCommands": {},
   "repository": "https://github.com/dsandstrom/atom-non-navigation",
