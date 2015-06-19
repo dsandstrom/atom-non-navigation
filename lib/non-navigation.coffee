@@ -16,7 +16,8 @@ class NonNavigation
         cursor.setBufferPosition(position)
 
   wordAndNonWordRegExp: (options={}) ->
-    nonWordCharacters = atom.config.get('editor.nonWordCharacters', scope: options.scope)
+    nonWordCharacters =
+      atom.config.get('editor.nonWordCharacters', scope: options.scope)
     segments = ["^[\t ]*$"]
     segments.push("[^\\s#{_.escapeRegExp(nonWordCharacters)}]+")
     segments.push("\\s*[#{_.escapeRegExp(nonWordCharacters)}]?")
